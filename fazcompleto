@@ -166,4 +166,14 @@ VALUES (
     'exercicios'
 );
 SELECT * FROM cadastros;
-
+CREATE TABLE IF NOT EXISTS exercicios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    exercicios_seq varchar(44),
+    descriçao INTEGER NOT NULL
+  );
+INSERT INTO exercicios (exercicios_seq, descriçao)
+VALUES (
+    'id exercicio seq',
+    'descriçao'
+);
+SELECT * FROM exercicios;
