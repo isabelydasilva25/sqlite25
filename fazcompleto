@@ -90,20 +90,16 @@ CREATE TABLE if not exists clientes (
   id_cliente INTEGER NOT NULL,
   valor REAL NOT NULL,
   data_pagamento DATE NOT NULL,
-  mes_referencia VARCHAR(20) NOT NULL,
   forma_pagamento VARCHAR(50) NOT NULL,
-  status VARCHAR(20) NOT NULL,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id)
 );
 
-INSERT INTO pagamentos (id_cliente, valor, data_pagamento, mes_referencia, forma_pagamento, status)
+INSERT INTO pagamentos (id_cliente, valor, data_pagamento, forma_pagamento)
 VALUES (
   1,
   150.00,
   '2023-10-05',
-  'Outubro/2023',
   'PIX',
-  'Pago'
 );
 
 SELECT * FROM pagamentos;
