@@ -67,6 +67,7 @@ CREATE TABLE if not exists clientes (
      'pagamentos',
      'treino'
      );
+
      SELECT * FROM historico;
      
      CREATE TABLE if not exists movimento_mes (
@@ -81,6 +82,7 @@ CREATE TABLE if not exists clientes (
     '44',
     '122'
     );
+
     SELECT * FROM movimento_mes;
     
     CREATE TABLE IF NOT EXISTS pagamentos (
@@ -118,6 +120,7 @@ SELECT * FROM pagamentos;
     '13:20',
     '14:40'
     );
+
     SELECT * FROM movimento;
     
     CREATE TABLE IF NOT EXISTS plano_item (
@@ -135,4 +138,18 @@ SELECT * FROM plano_item;
 INSERT INTO plano_treino (cod_cliente)
 VALUES ('12222');
 SELECT * FROM plano_treino;
+
+CREATE TABLE IF NOT EXISTS movimentos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pagamentos INTEGER NOT NULL,
+    plano_treino INTEGER NOT NULL,
+    frequencia  INTEGER NOT NULL
+  );
+INSERT INTO movimentos (pagamentos, plano_treino, frequencia)
+VALUES (
+    'pagamentos',
+    'plano_treino',
+    'frequencia'
+);
+SELECT * FROM movimentos;
 
