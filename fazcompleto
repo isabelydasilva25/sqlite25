@@ -149,3 +149,21 @@ VALUES (
 );
 SELECT * FROM movimentos;
 
+CREATE TABLE IF NOT EXISTS cadastros (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cliente INTEGER NOT NULL,
+    plano_treino INTEGER NOT NULL,
+    funcionario INTEGER NOT NULL,
+    cargo INTEGER NOT NULL,
+    exercicios INTEGER NOT NULL
+  );
+INSERT INTO cadastros (cliente, plano_treino, funcionario, cargo, exercicios)
+VALUES (
+    'cliente',
+    'plano_treino',
+    'funcionario',
+    'cargo',
+    'exercicios'
+);
+SELECT * FROM cadastros;
+
