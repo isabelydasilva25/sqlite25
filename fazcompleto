@@ -1,0 +1,138 @@
+CREATE TABLE if not exists cargo (
+  id integer PRIMARY KEY AUTOINCREMENT,
+  cod_func  VARCHAR(6) NOT NULL,
+  funcao VARCHAR(100) NOT NULL
+  );
+  INSERT INTO cargo (cod_func, funcao)
+  VALUES(
+    '111111',
+    'recepicionista'
+    );
+  
+SELECT * FROM cargo;
+
+CREATE TABLE if not exists clientes (
+  id INTEGER primary key AUTOINCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  idade INTEGER,
+  telefone VARCHAR(15),
+  telefone_emergencia VARCHAR(15),
+  endereco TEXT,
+  email VARCHAR(100),
+  cpf VARCHAR(14) NOT NULL UNIQUE
+  );
+  
+  INSERT INTO Clientes (nome, idade, telefone, telefone_emergencia, endereco, email, cpf)
+  VALUES (
+    'mariana schakofski',
+    '16',
+    '(45) 99999-999',
+    '(45) 22222-222',
+    'av das cataratas, 123, foz do iguaçu - PR',
+    'iiiiiii@gmail.pr',
+    '123.221.456-11'
+    );
+  
+  SELECT * FROM clientes;
+  
+  CREATE TABLE if not exists Funcionario (
+  id INTEGER primary key AUTOINCREMENT,
+  cargo VARCHAR(100) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  cpf VARCHAR(14) NOT NULL UNIQUE,
+  endereco TEXT,
+  telefone VARCHAR(15),
+  idade INTEGER
+  );
+  
+  INSERT INTO Funcionario (cargo, nome, cpf, endereco, telefone, idade)
+  VALUES (
+    'recepcionista',
+    'mariana schakofski',
+    '123.456.789-55',
+    'av das cataratas, 123, foz do iguaçu - PR',
+    '(45) 99999-999',
+    '21'
+    );
+  
+  SELECT * FROM Funcionario;
+  
+  CREATE TABLE if not EXISTS historico(
+ id INTEGER primary key AUTOINCREMENT,
+  pagamento VARCHAR(6),
+  treino VARCHAR(100) NOT NULL
+   );
+   INSERT INTO historico (pagamento, treino)
+   VALUES(
+     'pagamentos',
+     'treino'
+     );
+     SELECT * FROM historico;
+     
+     CREATE TABLE if not exists movimento_mes (
+  id_movimento INTEGER primary key AUTOINCREMENT,
+  cliente varchar(50) not NULL,
+  treinos_feitos varchar(10) NOT NULL,
+  faltas varchar(10) NOT NULL 
+  );
+  INSERT INTO movimento_mes (cliente, treinos_feitos, faltas)
+  VALUES(
+    'mariana',
+    '44',
+    '122'
+    );
+    SELECT * FROM movimento_mes;
+    
+    CREATE TABLE IF NOT EXISTS pagamentos (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_cliente INTEGER NOT NULL,
+  valor REAL NOT NULL,
+  data_pagamento DATE NOT NULL,
+  mes_referencia VARCHAR(20) NOT NULL,
+  forma_pagamento VARCHAR(50) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+);
+
+INSERT INTO pagamentos (id_cliente, valor, data_pagamento, mes_referencia, forma_pagamento, status)
+VALUES (
+  1,
+  150.00,
+  '2023-10-05',
+  'Outubro/2023',
+  'PIX',
+  'Pago'
+);
+
+SELECT * FROM pagamentos;
+
+    CREATE TABLE if not exists movimento (
+  id_movimento INTEGER primary key AUTOINCREMENT,
+  cliente varchar(50) not NULL,
+  horario_entrada varchar(10) NOT NULL,
+  horario_saida varchar(10) NOT NULL UNIQUE
+  );
+  INSERT INTO movimento (cliente, horario_entrada, horario_saida)
+  VALUES(
+    'mariana',
+    '13:20',
+    '14:40'
+    );
+    SELECT * FROM movimento;
+    
+    CREATE TABLE IF NOT EXISTS plano_item (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,  
+  exercicio_seq VARCHAR(6) NOT NULL
+);
+INSERT INTO plano_item (exercicio_seq)
+VALUES ('leg, afundo, agachamento, barra, bulgaro, stiff, agachamento terra, abdutora');
+SELECT * FROM plano_item;
+
+    CREATE TABLE IF NOT EXISTS plano_treino (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,  
+  cod_cliente VARCHAR(6) NOT NULL
+);
+INSERT INTO plano_treino (cod_cliente)
+VALUES ('12222');
+SELECT * FROM plano_treino;
+
