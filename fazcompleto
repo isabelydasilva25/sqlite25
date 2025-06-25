@@ -1,15 +1,3 @@
-CREATE TABLE if not exists cargo (
-  id integer PRIMARY KEY AUTOINCREMENT,
-  cod_func  VARCHAR(6) NOT NULL,
-  funcao VARCHAR(100) NOT NULL
-  );
-  INSERT INTO cargo (cod_func, funcao)
-  VALUES(
-    '111111',
-    'recepicionista'
-    );
-  
-SELECT * FROM cargo;
 
 CREATE TABLE if not exists clientes (
   id INTEGER primary key AUTOINCREMENT,
@@ -35,7 +23,7 @@ CREATE TABLE if not exists clientes (
   
   SELECT * FROM clientes;
   
-  CREATE TABLE if not exists Funcionario (
+ CREATE TABLE if not exists Funcionario (
   id INTEGER primary key AUTOINCREMENT,
   cargo VARCHAR(100) NOT NULL,
   nome VARCHAR(100) NOT NULL,
@@ -56,6 +44,22 @@ CREATE TABLE if not exists clientes (
     );
   
   SELECT * FROM Funcionario;
+  
+CREATE TABLE if not exists cargo (
+    id integer PRIMARY KEY AUTOINCREMENT,
+    cod_func VARCHAR(6) NOT NULL,
+    funcao VARCHAR(100) NOT NULL,
+    funcionario_id INTEGER,  -- Adicionado a coluna para a chave estrangeira
+    FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)  -- Definição da chave estrangeira
+    );
+   INSERT INTO cargo (cod_func, funcao)
+   VALUES(
+    '111111',
+    'recepicionista'
+    );
+    
+    SELECT * FROM cargo;
+  
   
   CREATE TABLE if not EXISTS historico(
  id INTEGER primary key AUTOINCREMENT,
