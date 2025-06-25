@@ -96,10 +96,10 @@ CREATE TABLE if not exists clientes (
 
 INSERT INTO pagamentos (id_cliente, valor, data_pagamento, forma_pagamento)
 VALUES (
-  1,
-  150.00,
+  '1',
+  '150.00',
   '2023-10-05',
-  'PIX',
+  'PIX'
 );
 
 SELECT * FROM pagamentos;
@@ -191,3 +191,4 @@ CREATE TABLE if not exists login (
     );
   
 SELECT * FROM login;
+
