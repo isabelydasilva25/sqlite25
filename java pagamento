@@ -1,0 +1,645 @@
+html:
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pagamentos</title>
+    <link rel="stylesheet" href="pag.css">
+</head>
+<body>
+    <header>
+         <img class="logo" src="imagens/logoo.png" alt="Logo">
+         <img class="logo2" src="imagens/ccmts.jfif" alt="CCMTS">
+         <img class="logo3" src="imagens/parana.png" alt="Paraná">
+    </header>
+    <nav></nav>
+    <main>
+      <section id="planos">
+         <h2>Pagamentos</h2>
+         <form class="Cadastro" id="formPagamento">
+               <label for="codigo_cliente">Código cliente</label>
+               <input type="text" name="codigo_cliente" id="codigo_cliente" placeholder="Código cliente">
+
+               <label for="valor">Valor</label>
+               <input type="text" name="valor" id="valor" placeholder="Valor">
+
+               <label for="forma_pagamento">Forma de Pagamento</label>
+               <select id="forma_pagamento" name="forma_pagamento">
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Pix">Pix</option>
+                <option value="Cartão">Cartão</option>
+              </select>
+
+               <label for="data_pagamento">Data</label>
+               <input type="date" name="data_pagamento" id="data_pagamento" placeholder="Data">
+         </form>
+
+         <div class="container_botoes">
+            <button class="botao" id="btnIncluir">Incluir</button>
+            <button class="botao2" id="btnExcluir">Excluir</button>
+            <button class="botao3" id="btnAlterar">Alterar</button>
+            <button class="botao4" id="btnConsultar">Consultar</button>
+            <a href="escolha.html"><button class="botao5">Voltar</button></a>
+         </div>
+
+         <div id="tabela-container">
+            <!-- Tabela será gerada pelo JavaScript -->
+         </div>
+      </section>
+    </main>
+
+    <footer>
+         <img class="logo4" src="imagens/gimc2.png" alt="GIMC">
+         <P>&COPY; 2025 - Todos os direitos reservados.</P>
+    </footer>
+
+    <script src="pag.js"></script>
+</body>
+</html>
+
+
+css:
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #acccdc;
+    color: #333;
+}
+
+header {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+header .logo h1 {
+    margin: 0;
+    padding: 10px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.logo2, .logo3 {
+    width: 100%;
+    max-width: 65px;
+    height: auto;
+    position: static;
+    margin: 10px;
+}
+
+.logo4 {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+section {
+    margin: 30px auto;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: left;
+    align-items: start;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 7px;
+    font-size: 16px;
+    border: 1px solid #0e2133;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    background-color: #0e2133;
+    color: #f9f9f9;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #0e2133;
+    flex-wrap: wrap;
+}
+
+nav a {
+    margin: 5px 15px;
+    color: #f9f9f9;
+    text-decoration: none;
+}
+
+.botao, .botao2, .botao3, .botao4, .botao5 {
+    border-radius: 7px;
+    margin-top: 10px;
+    border: none;
+    width: 87px;
+    height: 25px;
+    color: #ffffff;
+    background-color: #0e2133;
+    cursor: pointer;
+}
+
+.container_botoes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Estilos para a tabela */
+.tabela-pagamentos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela-pagamentos th, .tabela-pagamentos td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabela-pagamentos th {
+    background-color: #0e2133;
+    color: white;
+}
+
+.tabela-pagamentos tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tabela-pagamentos tr:hover {
+    background-color: #ddd;
+}
+
+.btn-editar, .btn-excluir {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-editar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-excluir {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Mensagens */
+.mensagem {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    display: none;
+}
+
+.mensagem.sucesso {
+    background-color: #dff0d8;
+    color: #3c763d;
+    display: block;
+}
+
+.mensagem.erro {
+    background-color: #f2dede;
+    color: #a94442;
+    display: block;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .logo2, .logo3 {
+        position: static;
+        margin: 10px 0;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        margin: 5px 0;
+        padding: 5px;
+    }
+    
+    .container_botoes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .botao, .botao2, .botao3, .botao4, .botao5 {
+        width: 100%;
+        max-width: 200px;
+        margin: 5px 0;
+    }
+    
+    select {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 15px;
+        margin: 20px auto;
+    }
+    
+    form input {
+        font-size: 14px;
+    }
+    
+    .logo {
+        max-width: 250px;
+    }
+    
+    .logo2, .logo3 {
+        max-width: 50px;
+    }
+    
+    .tabela-pagamentos {
+        font-size: 14px;
+    }
+    
+    .btn-editar, .btn-excluir {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}
+
+java:
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do DOM
+    const form = document.getElementById('formPagamento');
+    const codigoClienteInput = document.getElementById('codigo_cliente');
+    const valorInput = document.getElementById('valor');
+    const formaPagamentoSelect = document.getElementById('forma_pagamento');
+    const dataInput = document.getElementById('data_pagamento');
+    const btnIncluir = document.getElementById('btnIncluir');
+    const btnExcluir = document.getElementById('btnExcluir');
+    const btnAlterar = document.getElementById('btnAlterar');
+    const btnConsultar = document.getElementById('btnConsultar');
+    const tabelaContainer = document.getElementById('tabela-container');
+    
+    // Variável para controle de edição
+    let editando = false;
+    let idEditando = null;
+    
+    // Dados de exemplo (substituir por chamadas AJAX na implementação real)
+    let pagamentos = [
+        { id: 1, id_cliente: 1, valor: 150.00, data: '2023-10-05', forma_pagamento: 'Pix' },
+        { id: 2, id_cliente: 2, valor: 200.50, data: '2023-10-06', forma_pagamento: 'Cartão' },
+        { id: 3, id_cliente: 3, valor: 75.25, data: '2023-10-07', forma_pagamento: 'Dinheiro' }
+    ];
+    
+    // Inicialização
+    criarTabela();
+    
+    // Event Listeners
+    btnIncluir.addEventListener('click', incluirPagamento);
+    btnExcluir.addEventListener('click', prepararExclusao);
+    btnAlterar.addEventListener('click', prepararEdicao);
+    btnConsultar.addEventListener('click', consultarPagamentos);
+    
+    // Função para criar a tabela de pagamentos
+    function criarTabela() {
+        tabelaContainer.innerHTML = '';
+        
+        const tabela = document.createElement('table');
+        tabela.className = 'tabela-pagamentos';
+        tabela.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Código Cliente</th>
+                    <th>Valor</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+        
+        const tbody = tabela.querySelector('tbody');
+        
+        if (pagamentos.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="5">Nenhum pagamento cadastrado</td>`;
+            tbody.appendChild(row);
+        } else {
+            pagamentos.forEach(pagamento => {
+                const row = document.createElement('tr');
+                row.dataset.id = pagamento.id;
+                row.innerHTML = `
+                    <td>${pagamento.id_cliente}</td>
+                    <td>R$ ${pagamento.valor.toFixed(2)}</td>
+                    <td>${pagamento.forma_pagamento}</td>
+                    <td>${formatarData(pagamento.data)}</td>
+                    <td>
+                        <button class="btn-editar">Editar</button>
+                        <button class="btn-excluir">Excluir</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        tabelaContainer.appendChild(tabela);
+        
+        // Adicionar eventos aos botões de ação
+        document.querySelectorAll('.btn-editar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                editarPagamento(row.dataset.id);
+            });
+        });
+        
+        document.querySelectorAll('.btn-excluir').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                excluirPagamento(row.dataset.id);
+            });
+        });
+    }
+    
+    // Função para formatar data (yyyy-mm-dd para dd/mm/yyyy)
+    function formatarData(data) {
+        if (!data) return '';
+        const [ano, mes, dia] = data.split('-');
+        return `${dia}/${mes}/${ano}`;
+    }
+    
+    // Função para incluir um novo pagamento
+    function incluirPagamento() {
+        if (!validarFormulario()) return;
+        
+        const novoPagamento = {
+            id: pagamentos.length > 0 ? Math.max(...pagamentos.map(p => p.id)) + 1 : 1,
+            id_cliente: parseInt(codigoClienteInput.value),
+            valor: parseFloat(valorInput.value),
+            forma_pagamento: formaPagamentoSelect.value,
+            data: dataInput.value
+        };
+        
+        if (editando) {
+            // Atualizar pagamento existente
+            const index = pagamentos.findIndex(p => p.id === idEditando);
+            if (index !== -1) {
+                pagamentos[index] = novoPagamento;
+                mostrarMensagem('Pagamento atualizado com sucesso!', 'sucesso');
+            }
+            editando = false;
+            idEditando = null;
+            btnIncluir.textContent = 'Incluir';
+            btnAlterar.disabled = false;
+        } else {
+            // Adicionar novo pagamento
+            pagamentos.push(novoPagamento);
+            mostrarMensagem('Pagamento incluído com sucesso!', 'sucesso');
+        }
+        
+        criarTabela();
+        form.reset();
+    }
+    
+    // Função para preparar edição
+    function prepararEdicao() {
+        if (!codigoClienteInput.value) {
+            mostrarMensagem('Informe o código do cliente para editar', 'erro');
+            return;
+        }
+        
+        const pagamento = pagamentos.find(p => p.id_cliente == codigoClienteInput.value);
+        
+        if (!pagamento) {
+            mostrarMensagem('Nenhum pagamento encontrado para este cliente', 'erro');
+            return;
+        }
+        
+        // Preencher formulário com dados do pagamento
+        codigoClienteInput.value = pagamento.id_cliente;
+        valorInput.value = pagamento.valor;
+        formaPagamentoSelect.value = pagamento.forma_pagamento;
+        dataInput.value = pagamento.data;
+        
+        // Configurar modo edição
+        editando = true;
+        idEditando = pagamento.id;
+        btnIncluir.textContent = 'Salvar';
+        btnAlterar.disabled = true;
+    }
+    
+    // Função para editar pagamento diretamente da tabela
+    function editarPagamento(id) {
+        const pagamento = pagamentos.find(p => p.id == id);
+        
+        if (pagamento) {
+            // Preencher formulário com dados do pagamento
+            codigoClienteInput.value = pagamento.id_cliente;
+            valorInput.value = pagamento.valor;
+            formaPagamentoSelect.value = pagamento.forma_pagamento;
+            dataInput.value = pagamento.data;
+            
+            // Configurar modo edição
+            editando = true;
+            idEditando = pagamento.id;
+            btnIncluir.textContent = 'Salvar';
+            btnAlterar.disabled = true;
+            
+            // Rolar até o formulário
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    // Função para preparar exclusão
+    function prepararExclusao() {
+        if (!codigoClienteInput.value) {
+            mostrarMensagem('Informe o código do cliente para excluir', 'erro');
+            return;
+        }
+        
+        const pagamento = pagamentos.find(p => p.id_cliente == codigoClienteInput.value);
+        
+        if (!pagamento) {
+            mostrarMensagem('Nenhum pagamento encontrado para este cliente', 'erro');
+            return;
+        }
+        
+        if (confirm(`Tem certeza que deseja excluir o pagamento do cliente ${pagamento.id_cliente}?`)) {
+            excluirPagamento(pagamento.id);
+        }
+    }
+    
+    // Função para excluir pagamento
+    function excluirPagamento(id) {
+        pagamentos = pagamentos.filter(p => p.id != id);
+        criarTabela();
+        mostrarMensagem('Pagamento excluído com sucesso!', 'sucesso');
+        
+        // Se estava editando o item excluído, limpar o formulário
+        if (editando && idEditando == id) {
+            form.reset();
+            editando = false;
+            idEditando = null;
+            btnIncluir.textContent = 'Incluir';
+            btnAlterar.disabled = false;
+        }
+    }
+    
+    // Função para consultar pagamentos
+    function consultarPagamentos() {
+        if (!codigoClienteInput.value) {
+            criarTabela(); // Mostrar todos se não houver filtro
+            return;
+        }
+        
+        const pagamentosFiltrados = pagamentos.filter(p => p.id_cliente == codigoClienteInput.value);
+        
+        if (pagamentosFiltrados.length === 0) {
+            mostrarMensagem('Nenhum pagamento encontrado para este cliente', 'erro');
+        } else {
+            mostrarMensagem(`${pagamentosFiltrados.length} pagamento(s) encontrado(s)`, 'sucesso');
+        }
+        
+        // Criar tabela apenas com os resultados da consulta
+        tabelaContainer.innerHTML = '';
+        
+        const tabela = document.createElement('table');
+        tabela.className = 'tabela-pagamentos';
+        tabela.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Código Cliente</th>
+                    <th>Valor</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+        
+        const tbody = tabela.querySelector('tbody');
+        
+        pagamentosFiltrados.forEach(pagamento => {
+            const row = document.createElement('tr');
+            row.dataset.id = pagamento.id;
+            row.innerHTML = `
+                <td>${pagamento.id_cliente}</td>
+                <td>R$ ${pagamento.valor.toFixed(2)}</td>
+                <td>${pagamento.forma_pagamento}</td>
+                <td>${formatarData(pagamento.data)}</td>
+                <td>
+                    <button class="btn-editar">Editar</button>
+                    <button class="btn-excluir">Excluir</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+        
+        tabelaContainer.appendChild(tabela);
+        
+        // Adicionar eventos aos botões de ação
+        document.querySelectorAll('.btn-editar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                editarPagamento(row.dataset.id);
+            });
+        });
+        
+        document.querySelectorAll('.btn-excluir').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                excluirPagamento(row.dataset.id);
+            });
+        });
+    }
+    
+    // Função para validar formulário
+    function validarFormulario() {
+        if (!codigoClienteInput.value) {
+            mostrarMensagem('Informe o código do cliente', 'erro');
+            return false;
+        }
+        
+        if (!valorInput.value || isNaN(valorInput.value)) {
+            mostrarMensagem('Informe um valor válido', 'erro');
+            return false;
+        }
+        
+        if (!dataInput.value) {
+            mostrarMensagem('Informe a data do pagamento', 'erro');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Função para mostrar mensagens
+    function mostrarMensagem(texto, tipo) {
+        // Remove mensagens anteriores
+        const mensagensAntigas = document.querySelectorAll('.mensagem');
+        mensagensAntigas.forEach(msg => msg.remove());
+        
+        const mensagem = document.createElement('div');
+        mensagem.className = `mensagem ${tipo}`;
+        mensagem.textContent = texto;
+        
+        // Inserir após o formulário
+        form.insertAdjacentElement('afterend', mensagem);
+        
+        // Remover após 5 segundos
+        setTimeout(() => {
+            mensagem.remove();
+        }, 5000);
+    }
+});
